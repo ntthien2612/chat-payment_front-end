@@ -1,0 +1,44 @@
+<form (ngSubmit)="onSubmit()" #taskForm="ngForm" class="mb-4">
+  <!-- 📝 Tiêu đề công việc -->
+  <div class="mb-3">
+    <label for="title" class="form-label">Tiêu đề công việc</label>
+    <input
+      id="title"
+      type="text"
+      [(ngModel)]="newTask.title"
+      name="title"
+      placeholder="Nhập tiêu đề công việc"
+      class="form-control"
+      [ngClass]="{'is-invalid': title.invalid && title.touched}"
+      required
+      #title="ngModel"
+    />
+    <div *ngIf="title.invalid && title.touched" class="invalid-feedback">
+      Tiêu đề không được để trống.
+    </div>
+  </div>
+
+  <!-- 📝 Mô tả công việc -->
+  <div class="mb-3">
+    <label for="description" class="form-label">Mô tả công việc</label>
+    <textarea
+      id="description"
+      [(ngModel)]="newTask.description"
+      name="description"
+      rows="3"
+      placeholder="Nhập mô tả chi tiết công việc"
+      class="form-control"
+      [ngClass]="{'is-invalid': description.invalid && description.touched}"
+      required
+      #description="ngModel"
+    ></textarea>
+    <div *ngIf="description.invalid && description.touched" class="invalid-feedback">
+      Mô tả không được để trống.
+    </div>
+  </div>
+
+  <!-- 🚀 Nút tạo task -->
+  <button type="submit" class="btn btn-primary w-100" [disabled]="taskForm.invalid">
+    ➕ Tạo Công Việc
+  </button>
+</form>

@@ -1,0 +1,40 @@
+<div class="d-flex" style="height: 500px; border: 1px solid #ccc; border-radius: 8px; overflow: hidden">
+  <!-- DANH SÁCH USER -->
+  <div class="p-3 border-end" style="width: 30%; background-color: #f8f9fa;">
+    <h5 class="mb-3">👤 Danh sách Bạn của {{currentUsername}}</h5>
+    <div
+      *ngFor="let user of users"
+      class="mb-2 p-2 bg-light rounded shadow-sm"
+      [class.bg-primary]="selectedUser?.id === user.id"
+      [class.text-green]="selectedUser?.id === user.id"
+      (click)="selectUser(user)"
+      style="cursor: pointer;"
+    >
+      {{ user.username }}
+    </div>
+  </div>
+
+  <!-- KHUNG CHAT -->
+  <div class="flex-grow-1 d-flex flex-column">
+    <div class="flex-grow-1 p-3 overflow-auto" style="background-color: #fff;">
+      <h6 *ngIf="selectedUser">💬 Chat với: {{ selectedUser.username }}</h6>
+      <div *ngFor="let msg of getChatMessages()" class="mb-2">
+        <strong>{{ getUsername(msg.sender) }}:</strong> {{ msg.content }}
+        <small class="text-muted ms-2" style="font-size: 0.8rem;">
+          {{ msg.timestamp | date:'dd/MM/yyyy HH:mm:ss' }}
+        </small>
+      </div>
+    </div>
+
+    <div class="p-3 border-top d-flex">
+      <input
+        [(ngModel)]="messageContent"
+        (keyup.enter)="sendMessage()"
+        class="form-control me-2"
+        placeholder="Nhập nội dung chat..."
+        [disabled]="!selectedUser"
+      />
+      <button class="btn btn-primary" (click)="sendMessage()" [disabled]="!selectedUser">Gửi</button>
+    </div>
+  </div>
+</div>

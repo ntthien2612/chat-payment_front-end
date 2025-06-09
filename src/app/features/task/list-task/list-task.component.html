@@ -1,0 +1,17 @@
+<h4 class="fs-3 fw-semibold text-center mb-4 text-dark">
+  📋 Danh sách công việc
+</h4>
+
+<div *ngIf="tasks$ | async as tasks">
+  <div *ngFor="let task of tasks" class="card mb-3 shadow-sm">
+    <div class="card-body">
+      <h5 class="card-title">{{ task.title }}</h5>
+      <p class="card-text">{{ task.description }}</p>
+      <p class="fw-bold">
+        Trạng thái:
+        <span class="text-success fw-bold" *ngIf="task.completed">✅ Hoàn thành</span>
+        <span class="text-danger fw-bold" *ngIf="!task.completed">❌ Chưa hoàn thành</span>
+      </p>
+    </div>
+  </div>
+</div>

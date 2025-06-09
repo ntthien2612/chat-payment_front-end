@@ -1,0 +1,22 @@
+<main class="main">
+  <div class="min-vh-100 bg-light d-flex flex-column align-items-center justify-content-center p-4">
+    <h1 class="text-center mb-4 text-dark">
+      📝 Quản lý Công việc
+    </h1>
+    <div class="w-100 mw-50 bg-white shadow-lg rounded-4 p-4 mb-2">
+      <a routerLink="/register" routerLinkActive="fw-bold" class="mx-3 btn btn-light shadow-sm px-4 py-2">🏠 Trang chủ</a>
+      <a routerLink="/tasks" routerLinkActive="fw-bold" class="mx-3 btn btn-light shadow-sm px-4 py-2">📝 Danh sách Task</a>
+      <a routerLink="/create-task" routerLinkActive="fw-bold" class="mx-3 btn btn-light shadow-sm px-4 py-2">➕ Tạo Task</a>
+      <!-- ✅ Thêm liên kết đến trang Chat -->
+      <a routerLink="/chat" routerLinkActive="fw-bold" class="mx-3 btn btn-light shadow-sm px-4 py-2">
+        💬 Chat
+      </a>
+
+      <!-- LogOut button with click handler -->
+      <a (click)="logout()" class="mx-3 btn btn-light shadow-sm px-4 py-2">🚪 LogOut</a>
+    </div>
+    
+    <!-- 👇 Phải có thẻ này -->
+    <router-outlet></router-outlet>
+  </div>
+</main>
